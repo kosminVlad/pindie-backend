@@ -5,5 +5,6 @@ const {createCategory} = require('../middlewares/categories');
 const {sendCategoryCreated} = require('../controllers/categories');
 
 categoriesRouter.post("/categories", findAllCategories, createCategory, sendCategoryCreated);
+categoriesRouter.get("/categories", findAllCategories, sendAllCategories);
 
 module.exports = categoriesRouter;
