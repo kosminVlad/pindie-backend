@@ -5,7 +5,7 @@ const usersRouter = require('./routes/users');
 const categoriesRouter = require('./routes/categories')
 const gamesRouter = require('./routes/games');
 const connectToDatabase = require('./database/connect');
-const cors = require('./middlewars/cors');
+const cors = require('./middlewares/cors');
 
 const PORT = 3000;
 
