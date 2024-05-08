@@ -5,14 +5,17 @@ const findAllUsers = async (req, res, next) => {
   next();
 }
 
+// middlewares/users.js
 const findUserById = async (req, res, next) => {
+  console.log("GET /users/:id");
   try {
     req.user = await users.findById(req.params.id);
     next();
   } catch (error) {
-    res.status(400).send(JSON.stringify({ message: "Пользователь не найден" }));
+    res.setHeader("Content-Type", "application/json");
+        res.status(404).send(JSON.stringify({ message: "Пользователь не найдена" }));
   }
-}
+};
 
 const createUser = async (req, res, next) => {
   console.log("POST /users");
