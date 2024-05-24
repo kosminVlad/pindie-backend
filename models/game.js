@@ -1,5 +1,3 @@
-// models/game.js
-
 const mongoose = require("mongoose");
 const userModel = require("./user");
 const categoryModel = require("./category");
