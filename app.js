@@ -24,5 +24,5 @@ app.use(
   
 
 app.listen(PORT, () => {
-    console.log(`Server is running at http://158.160.156.133:${PORT}`)
+    console.log(`Server is running at http://localhost:${PORT}`)
 })
