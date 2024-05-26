@@ -21,7 +21,7 @@ const sendUserUpdated = (req,res) => {
 
 const sendUserDeleted = (req,res) => {
   res.setHeader('Content-Type', 'application/json')
-  res.end({ message: "Пользователь удален" });
+  res.status(200).send(JSON.stringify({ message: "Пользователь обновлен" }));
 }
 
 const sendMe = (req, res) => {
