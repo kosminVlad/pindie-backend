@@ -61,33 +61,33 @@ const deleteUser = async (req,res,next) => {
 }
 
 const checkEmptyNameAndEmailAndPassword = async (req, res, next) => {
-  if (!req.body.name || !req.body.email || !req.body.password) {
+  if (!req.body.username || !req.body.email || !req.body.password) {
     res.setHeader("Content-Type", "application/json");
-    res.status(400).send({ message: "Заполни все поля" });
+        res.status(400).send(JSON.stringify({ message: "Введите имя, email и пароль" }));
   } else {
     next();
   }
-}
+}; 
 
 const checkIsUserExists = async (req, res, next) => {
-  const isInArray = req.categoriesArray.find((user) => {
-    return req.body.name === user.name;
+  const isInArray = req.usersArray.find((user) => {
+    return req.body.email === user.email;
   });
   if (isInArray) {
     res.setHeader("Content-Type", "application/json");
-        res.status(400).send(JSON.stringify({ message: "Категория с таким названием уже существует" }));
+        res.status(400).send(JSON.stringify({ message: "Пользователь с таким email уже существует" }));
   } else {
     next();
   }
-}
+}; 
 
 const checkEmptyNameAndEmail = async (req, res, next) => {
-  if (!req.body.name || !req.body.email) {
+  if (!req.body.username || !req.body.email) {
     res.setHeader("Content-Type", "application/json");
-    res.status(400).send({ message: "Заполни все поля" });
+        res.status(400).send(JSON.stringify({ message: "Введите имя и email" }));
   } else {
     next();
   }
-}
+}; 
 
 module.exports = { findAllUsers, createUser, findUserById, updateUser, deleteUser, checkEmptyNameAndEmailAndPassword, checkEmptyNameAndEmail, hashPassword, checkIsUserExists };

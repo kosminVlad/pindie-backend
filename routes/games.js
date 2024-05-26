@@ -5,8 +5,19 @@ const { checkAuth } = require('../middlewares/auth');
 
 gamesRouter.get("/games/:id", findGameById, sendGameById);
 gamesRouter.get("/games", findAllGames ,sendAllGames);
-gamesRouter.post('/games', findAllGames, checkEmptyFields, checkAuth ,checkIsGameExists, createGame, sendGameCreated); 
-gamesRouter.put("/games/:id", findGameById,checkIsVoteRequest,checkIfCategoriesAvaliable,checkIfUsersAreSafe, checkEmptyFields,checkAuth, updateGame, sendGameUpdated);
+gamesRouter.post('/games', findAllGames, checkIfCategoriesAvaliable, checkEmptyFields, checkAuth ,checkIsGameExists, createGame, sendGameCreated); 
+
+gamesRouter.put(
+    "/games/:id", 
+    findGameById,
+    checkIsVoteRequest,
+    checkIfCategoriesAvaliable,
+    checkIfUsersAreSafe, 
+    checkEmptyFields,
+    checkAuth, 
+    updateGame, 
+    sendGameUpdated);
+
 gamesRouter.delete("/games/:id", checkAuth, deleteGame, sendGameDeleted)
 
 

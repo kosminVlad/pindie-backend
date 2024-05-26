@@ -68,4 +68,14 @@ const checkEmptyName = async (req, res, next) => {
     next();
   }
 }
-module.exports = { findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategory, checkIsCategoryExists, checkEmptyName };
+
+const checkIfCategoriesAvaliable = async (req, res, next) => {
+  if (!req.body.categories || req.body.categories.length === 0) {
+    res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ message: "Выберите хотя бы одну категорию" }));
+  } else {
+    next();
+  }
+};
+
+module.exports = { findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategory, checkIsCategoryExists, checkEmptyName, checkIfCategoriesAvaliable };
